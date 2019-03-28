@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Fisher.Bookstore.Models;
 using Microsoft.AspNetCore.Mvc;
+using Fisher.Bookstore.Api.Data;
 
 namespace Fisher.Bookstore.Api.Controllers
 {
@@ -22,22 +23,31 @@ namespace Fisher.Bookstore.Api.Controllers
                 {
                     Id = 1,
                     Title = "Design Patterns",
-                    Author = "Erich Gamma",
-                    ISBN = "978-0201633610"
+                    Author = new Author()
+                    {
+                        Name = "Erich Gamma"
+                    },
+                    Isbn = "978-0201633610"
                 });
                 this.db.Books.Add(new Book()
                 {
                     Id = 2,
                     Title = "Continuous Delivery",
-                    Author = "Jez Humble",
-                    ISBN = "978-0321601919"
+                    Author = new Author()
+                    {
+                        Name = "Jez Humble"
+                    },
+                    Isbn = "978-0321601919"
                 });
                 this.db.Books.Add(new Book()
                 {
                     Id = 3,
                     Title = "The DevOps Handbook",
-                    Author = "Gene Kim",
-                    ISBN = "978-1942788003"
+                    Author = new Author()
+                    {
+                        Name = "Gene Kim"
+                    },
+                    Isbn = "978-1942788003"
                 });
             }
             this.db.SaveChanges();
@@ -93,7 +103,7 @@ namespace Fisher.Bookstore.Api.Controllers
             }
             
             bookToEdit.Title = book.Title;
-            bookToEdit.ISBN = book.ISBN;
+            bookToEdit.Isbn = book.Isbn;
 
             db.Books.Update(bookToEdit);
             db.SaveChanges();
